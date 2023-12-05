@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <form action="action_page.php" method="post">
+    <div class="imgcontainer">
+        <img src="img/provoLogo.jpg" alt="Logo" class="logo">
+    </div>
+  
+    <div class="container">
+        <legend style="text-align: center;" class="modify">Modify Your Account</legend>
+        <br>
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+      
+        <label for="newpassword"><b>New Password</b></label>
+        <input type="newpassword" placeholder="Enter Password" name="newpassword" required>
+        <a href="/login.html">
+            <button type="submit" onclick="modifyAccount();">Save New Login</button>
+        </a>
+    </div>
+  </form>
+
+  <script>
+    function modifyAccount()
+    {
+        const username = document.getElementById("username").value;
+        const newPassword = document.getElementById("newpassword").value;
+
+        if (!localStorage.getItem(username))
+        {
+            alert("You don't have an account.");
+        }
+
+        if(newPassword !== null)
+        {
+            localStorage.setItem(username, newPassword);
+            alert("Account Modified");
+        }
+
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    }
+  </script>
+</body>
+</html>
